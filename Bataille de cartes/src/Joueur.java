@@ -12,6 +12,6 @@ public class Joueur {
     }
 
     public String toString() {
-        return this.nom + " | " + this.points + " ";
+        return this.nom + " | " + this.points;
 	}
 }
