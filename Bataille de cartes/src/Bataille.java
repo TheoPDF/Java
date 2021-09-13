@@ -31,7 +31,9 @@ public class Bataille {
         //we give the remaining cards to player2
         for (int i = 0; i < paquetDeCartes.size(); i++)
             player2.JeuDeCartes.add(paquetDeCartes.get(i));
-        
+
+        //we create a list to store the tie cards
+        List<Carte> tie = new ArrayList<Carte>();
         //we check if there is still cards in the cards deck of player1 and player2
         while (player1.JeuDeCartes.size()>= 1 && player2.JeuDeCartes.size()>= 1){
         	//if there is no card left in the deck of player1, player2 is the winner
@@ -46,27 +48,30 @@ public class Bataille {
                 break;
             }
             //we count the point by drawing the first card if each deck
-            List<Carte> tie = new ArrayList<Carte>();
             Carte c1 = player1.JeuDeCartes.get(0);
             Carte c2 = player2.JeuDeCartes.get(0);
             
-            System.out.println(player1.toString() + ", carte: " + c1);
-            System.out.println(player2.toString() + ", carte: " + c2);
+            System.out.println(player1.toString() + " points, carte: " + c1);
+            System.out.println(player2.toString() + " points, carte: " + c2);
             //if the value of player1 card is bigger then he win the card of player2
             if (c1.getValeur() < c2.getValeur()){
                 player1.JeuDeCartes.remove(0);
+                player2.JeuDeCartes.remove(0);
                 player2.JeuDeCartes.add(c1);
                 player2.JeuDeCartes.add(c2);
                 player2.JeuDeCartes.addAll(tie);
+                tie.removeAll(tie);
                 player2.points += 1;
                 System.out.println("Player2 remporte le round");
             }
             //if the value of player2ccard is bigger then he win the card of player1
             else if (c1.getValeur() > c2.getValeur()) {
                 player2.JeuDeCartes.remove(0);
+                player1.JeuDeCartes.remove(0);
                 player1.JeuDeCartes.add(c2);
                 player1.JeuDeCartes.add(c1);
                 player1.JeuDeCartes.addAll(tie);
+                tie.removeAll(tie);
                 player1.points += 1;
                 System.out.println("Player1 remporte le round");
             }
@@ -77,7 +82,10 @@ public class Bataille {
                 player1.JeuDeCartes.remove(0);
                 tie.add(c1);
                 tie.add(c2);
+                System.out.println("égalité");
             }
+            System.out.println("Player1 nombre de cartes " + player1.JeuDeCartes.size());
+            System.out.println("Player2 nombre de cartes " + player2.JeuDeCartes.size());
             System.out.println(System.getProperty("line.separator"));
         }
     }
