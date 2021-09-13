@@ -1,3 +1,4 @@
+package Bataille;
 import java.util.*;
 
 public class Bataille {

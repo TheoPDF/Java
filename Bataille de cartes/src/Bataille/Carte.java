@@ -1,3 +1,4 @@
+package Bataille;
 public class Carte{
 	//attributes
 	private int valeur;
@@ -19,16 +20,25 @@ public class Carte{
 	//we define a toString to keep the value of cards and still have a nice display
 	public String toString() {
 		String Carte = " de " + type;
-		if (valeur == 1) {
-			Carte = "As" + Carte;
-		} else if (valeur == 11) {
-			Carte = "Valet" + Carte;
-		} else if (valeur == 12) {
-			Carte = "Reine" + Carte;
-		} else if (valeur == 13) {
-			Carte = "Roi" + Carte;
-		} else {
-			Carte = valeur + Carte;
+		switch (valeur){
+			case 1: {
+				Carte = "As" + Carte;
+				break;
+			}
+			case 11: {
+				Carte = "Valet" + Carte;
+				break;
+			}
+			case 12: {
+				Carte = "Reine" + Carte;
+				break;
+			}
+			case 13: {
+				Carte = "Roi" + Carte;
+				break;
+			}
+			default:
+				Carte = valeur + Carte;
 		}
 		return Carte;
 	}	
