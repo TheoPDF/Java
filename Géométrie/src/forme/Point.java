@@ -1,4 +1,5 @@
-public class Point {
+package forme;
+	public class Point {
     //attributes
     private double x, y;
     //getters
@@ -23,4 +24,7 @@ public class Point {
     	double dy = Math.pow((P2.getY() - getY()), 2);
         return Math.sqrt(dx * dy);
     }
+    public String toString() {
+		return "(" + this.x + ", " + this.y + ")";
+	}
 }
